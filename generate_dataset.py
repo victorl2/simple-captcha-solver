@@ -56,6 +56,10 @@ if __name__ == '__main__':
 
     for index in range(total_captchas):
         start_time = timeit.default_timer()
-        captcha_image = extract_catpcha_image(captcha_url_page)
-        save_image(captcha_image)
-        print('captcha {} extracted in {:.2f} seconds'.format(index, timeit.default_timer() - start_time))
+        try:
+            captcha_image = extract_catpcha_image(captcha_url_page)
+            save_image(captcha_image)
+            print('captcha {} extracted in {:.2f} seconds'.format(index, timeit.default_timer() - start_time))
+        except Exception:
+            print('failed to extract captcha {}'.format(index))
+        
